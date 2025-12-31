@@ -24,8 +24,8 @@ function loadUserInfo() {
     return
   }
 
-  document.getElementById("user-name").textContent = currentUser.name || "Riya Kaki"
-  document.getElementById("user-email").textContent = currentUser.email || "riya.kaki@gmail.com"
+  document.getElementById("user-name").textContent = currentUser.name || "Riya Karki"
+  document.getElementById("user-email").textContent = currentUser.email || "riya.karki@gmail.com"
 }
 
 function loadOrderHistory() {
