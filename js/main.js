@@ -93,45 +93,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Mobile menu toggle
 function setupMobileMenu() {
+  if (window.__mobileMenuInitialized) return
+  window.__mobileMenuInitialized = true
+
   const hamburger = document.getElementById("hamburger")
   const mobileMenuOverlay = document.getElementById("mobileMenuOverlay")
   const closeMenu = document.getElementById("closeMenu")
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link")
 
-  if (hamburger) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active")
-      mobileMenuOverlay.classList.toggle("active")
-      document.body.style.overflow = mobileMenuOverlay.classList.contains("active") ? "hidden" : "auto"
-    })
+  if (!hamburger || !mobileMenuOverlay) return
+
+  const setMenuState = (isOpen) => {
+    hamburger.classList.toggle("active", isOpen)
+    mobileMenuOverlay.classList.toggle("active", isOpen)
+    document.body.classList.toggle("menu-open", isOpen)
+    hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false")
   }
+
+  hamburger.addEventListener("click", () => {
+    const nextState = !mobileMenuOverlay.classList.contains("active")
+    setMenuState(nextState)
+  })
 
   if (closeMenu) {
-    closeMenu.addEventListener("click", () => {
-      hamburger.classList.remove("active")
-      mobileMenuOverlay.classList.remove("active")
-      document.body.style.overflow = "auto"
-    })
+    closeMenu.addEventListener("click", () => setMenuState(false))
   }
 
-  // Close menu when clicking outside
-  if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener("click", (e) => {
-      if (e.target === mobileMenuOverlay) {
-        hamburger.classList.remove("active")
-        mobileMenuOverlay.classList.remove("active")
-        document.body.style.overflow = "auto"
-      }
-    })
-  }
+  mobileMenuOverlay.addEventListener("click", (e) => {
+    if (e.target === mobileMenuOverlay) {
+      setMenuState(false)
+    }
+  })
 
-  // Close menu when clicking a link
-  mobileNavLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("active")
-      mobileMenuOverlay.classList.remove("active")
-      document.body.style.overflow = "auto"
-    })
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", () => setMenuState(false))
+  })
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      setMenuState(false)
+    }
   })
 }
 
@@ -141,17 +142,37 @@ function loadProducts(containerId, products) {
   products.forEach((product) => {
     const productCard = document.createElement("div")
     productCard.className = "product-card"
+    const priceValue = Number.parseFloat(String(product.price).replace(/[^0-9.]/g, "")) || 0
+    const productName = JSON.stringify(product.name)
+    const productImage = JSON.stringify(product.image)
     productCard.innerHTML = `
             <img src="${product.image}" alt="${product.name}" class="product-image">
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-price">${product.price}</div>
                 <span class="availability-badge">${product.available ? "In Stock" : "Out of Stock"}</span>
-                <button class="btn btn-primary" onclick="viewProductDetails(2)">View Details</button>
+                <div class="product-buttons">
+                  <button class="btn btn-primary" onclick="viewProductDetails(${product.id})">View Details</button>
+                  <button class="btn btn-secondary" onclick='quickAddCartHome(${product.id}, ${productName}, ${priceValue}, ${productImage})'>Add to Cart</button>
+                </div>
             </div>
         `
     container.appendChild(productCard)
   })
+}
+
+function quickAddCartHome(productId, productName, price, image) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || []
+  const existingItem = cart.find((item) => item.id === productId)
+
+  if (existingItem) {
+    existingItem.quantity += 1
+  } else {
+    cart.push({ id: productId, name: productName, price, image, quantity: 1 })
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart))
+  updateCartCount()
 }
 
 function viewProductDetails(productId) {

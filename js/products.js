@@ -265,45 +265,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Mobile menu toggle
 function setupMobileMenu() {
+  if (window.__mobileMenuInitialized) return
+  window.__mobileMenuInitialized = true
+
   const hamburger = document.getElementById("hamburger")
   const mobileMenuOverlay = document.getElementById("mobileMenuOverlay")
   const closeMenu = document.getElementById("closeMenu")
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link")
 
-  if (hamburger) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active")
-      mobileMenuOverlay.classList.toggle("active")
-      document.body.style.overflow = mobileMenuOverlay.classList.contains("active") ? "hidden" : "auto"
-    })
+  if (!hamburger || !mobileMenuOverlay) return
+
+  const setMenuState = (isOpen) => {
+    hamburger.classList.toggle("active", isOpen)
+    mobileMenuOverlay.classList.toggle("active", isOpen)
+    document.body.classList.toggle("menu-open", isOpen)
+    hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false")
   }
+
+  hamburger.addEventListener("click", () => {
+    const nextState = !mobileMenuOverlay.classList.contains("active")
+    setMenuState(nextState)
+  })
 
   if (closeMenu) {
-    closeMenu.addEventListener("click", () => {
-      hamburger.classList.remove("active")
-      mobileMenuOverlay.classList.remove("active")
-      document.body.style.overflow = "auto"
-    })
+    closeMenu.addEventListener("click", () => setMenuState(false))
   }
 
-  // Close menu when clicking outside
-  if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener("click", (e) => {
-      if (e.target === mobileMenuOverlay) {
-        hamburger.classList.remove("active")
-        mobileMenuOverlay.classList.remove("active")
-        document.body.style.overflow = "auto"
-      }
-    })
-  }
+  mobileMenuOverlay.addEventListener("click", (e) => {
+    if (e.target === mobileMenuOverlay) {
+      setMenuState(false)
+    }
+  })
 
-  // Close menu when clicking a link
-  mobileNavLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("active")
-      mobileMenuOverlay.classList.remove("active")
-      document.body.style.overflow = "auto"
-    })
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", () => setMenuState(false))
+  })
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      setMenuState(false)
+    }
   })
 }
 

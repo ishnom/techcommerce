@@ -354,7 +354,7 @@ function loadRelatedProducts(currentProductId) {
           <div class="product-price">Rs ${product.price}</div>
           <span class="availability-badge">${product.available ? "In Stock" : "Out of Stock"}</span>
           <div class="product-buttons">
-            <button class="btn btn-primary" onclick="viewProductDetails(2)">View Details</button>
+            <button class="btn btn-primary" onclick="viewProductDetails(${id})">View Details</button>
           </div>
         </div>
       `

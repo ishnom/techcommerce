@@ -26,6 +26,10 @@ body {
   line-height: 1.6;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 /* NAVBAR STYLES */
 .navbar {
   background-color: var(--white);
@@ -361,16 +365,31 @@ body {
 
 /* BUTTON STYLES */
 .btn {
-  padding: 0.8rem 1.5rem;
+  padding: 0.65rem 1.1rem;
   border: none;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  white-space: nowrap;
+}
+
+.product-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.product-buttons .btn {
+  flex: 1;
+  width: auto;
+  min-width: 0;
 }
 
 .btn-primary {
@@ -386,13 +405,16 @@ body {
 }
 
 .btn-secondary {
-  background-color: var(--secondary-color);
-  color: var(--white);
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .btn-secondary:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(46, 175, 74, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 /* FOOTER STYLES */
