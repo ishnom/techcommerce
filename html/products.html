@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Renexa Market</title>
+    <link rel="stylesheet" href="../css/products.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1><a href="../index.html">Renexa Market</a></h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html?category=mobiles" class="nav-link">Mobile Phones</a></li>
+                <li><a href="products.html?category=laptops" class="nav-link">Laptops</a></li>
+                <li><a href="products.html?category=monitors" class="nav-link">Monitors</a></li>
+                <li><a href="products.html?category=all" class="nav-link">All Products</a></li>
+            </ul>
+            <div class="navbar-right">
+                <a href="login.html" class="login-link">Login</a>
+                <a href="cart.html" class="cart-icon">
+                    🛒
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </navbar>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu">
+            <button class="close-menu" id="closeMenu">&times;</button>
+            <ul class="mobile-menu-list">
+                <li><a href="../index.html#new-arrivals" class="mobile-nav-link">New Arrivals</a></li>
+                <li><a href="../index.html#featured" class="mobile-nav-link">Featured Products</a></li>
+                <li><a href="products.html?category=mobiles" class="mobile-nav-link">Mobile Phones</a></li>
+                <li><a href="products.html?category=laptops" class="mobile-nav-link">Laptops</a></li>
+                <li><a href="products.html?category=monitors" class="mobile-nav-link">Monitors</a></li>
+                <li><a href="products.html?category=all" class="mobile-nav-link">All Products</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>Shop All Products</h1>
+        <p>Discover our complete range of premium tech products</p>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <div class="category-tabs">
+        <button class="tab-btn active" data-category="all" onclick="filterByCategory('all')">All Products</button>
+        <button class="tab-btn" data-category="mobiles" onclick="filterByCategory('mobiles')">Mobile Phones</button>
+        <button class="tab-btn" data-category="laptops" onclick="filterByCategory('laptops')">Laptops</button>
+        <button class="tab-btn" data-category="monitors" onclick="filterByCategory('monitors')">Monitors</button>
+    </div>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section">
+        <div class="products-grid" id="products-grid">
+            <!-- Products loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Renexa Market</h4>
+                <p>Your trusted source for premium tech products and accessories.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Mobile Phones</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Monitors</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Birtamode, Jhapa, Nepal</p>
+                <p>Email: support@renexamarket.com</p>
+                <p>Phone: 9806068870</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Renexa Market. Created by Riya Kaki. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/products.js"></script>
+</body>
+</html>

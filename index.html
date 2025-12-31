@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renexa Market - Premium Tech Products</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1><a href="index.html">Renexa Market</a></h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="html/products.html?category=mobiles" class="nav-link">Mobile Phones</a></li>
+                <li><a href="html/products.html?category=laptops" class="nav-link">Laptops</a></li>
+                <li><a href="html/products.html?category=monitors" class="nav-link">Monitors</a></li>
+                <li><a href="html/products.html?category=all" class="nav-link">All Products</a></li>
+            </ul>
+            <div class="navbar-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." class="search-input" id="searchInput">
+                    <button class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                <a href="html/login.html" class="login-link">Login</a>
+                <a href="html/cart.html" class="cart-icon">
+                    🛒
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE SEARCH BAR -->
+    <div class="mobile-search-bar">
+        <input type="text" placeholder="Search products..." class="mobile-search-input" id="mobileSearchInput">
+        <button class="mobile-search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu">
+            <button class="close-menu" id="closeMenu">&times;</button>
+            <ul class="mobile-menu-list">
+                <li><a href="#new-arrivals" class="mobile-nav-link">New Arrivals</a></li>
+                <li><a href="#featured" class="mobile-nav-link">Featured Products</a></li>
+                <li><a href="html/products.html?category=mobiles" class="mobile-nav-link">Mobile Phones</a></li>
+                <li><a href="html/products.html?category=laptops" class="mobile-nav-link">Laptops</a></li>
+                <li><a href="html/products.html?category=monitors" class="mobile-nav-link">Monitors</a></li>
+                <li><a href="html/products.html?category=all" class="mobile-nav-link">All Products</a></li>
+                <li><a href="html/login.html" class="mobile-nav-link">Login</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Welcome to Renexa Market</h2>
+            <p>Your one-stop destination for premium tech products at unbeatable prices</p>
+            <button class="btn btn-primary" onclick="document.getElementById('new-arrivals').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- NEW ARRIVALS SECTION -->
+    <section id="new-arrivals" class="products-section">
+        <div class="section-header">
+            <h2>New Arrivals</h2>
+            <p>Check out our latest products this season</p>
+        </div>
+        <div class="products-grid" id="new-arrivals-grid">
+            <!-- Products will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS SECTION -->
+    <section id="featured" class="products-section">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <p>Our handpicked selection of bestsellers</p>
+        </div>
+        <div class="products-grid" id="featured-grid">
+            <!-- Products will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- CATEGORIES PREVIEW SECTION -->
+    <section class="categories-section">
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+            <p>Browse our popular categories</p>
+        </div>
+        <div class="categories-grid">
+            <a class="category-card" href="html/products.html?category=mobiles">
+                <img src="images/mobile1.jpg" alt="Mobile Phones">
+                <h3>Mobile Phones</h3>
+                <p>Latest smartphones and devices</p>
+            </a>
+            <a class="category-card" href="html/products.html?category=laptops">
+                <img src="images/laptop1.jpg" alt="Laptops">
+                <h3>Laptops</h3>
+                <p>High-performance computing</p>
+            </a>
+            <a class="category-card" href="html/products.html?category=monitors">
+                <img src="images/monitor1.jpg" alt="Monitors">
+                <h3>Monitors</h3>
+                <p>Crystal clear displays</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Renexa Market</h4>
+                <p>Your trusted source for premium tech products and accessories.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="html/products.html?category=mobiles">Mobile Phones</a></li>
+                    <li><a href="html/products.html?category=laptops">Laptops</a></li>
+                    <li><a href="html/products.html?category=monitors">Monitors</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Birtamode, Jhapa, Nepal</p>
+                <p>Email: support@renexamarket.com</p>
+                <p>Phone: 9806068870</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Renexa Market. Created by Riya Kaki. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

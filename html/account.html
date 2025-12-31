@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Renexa Market</title>
+    <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1><a href="../index.html">Renexa Market</a></h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html?category=mobiles" class="nav-link">Mobile Phones</a></li>
+                <li><a href="products.html?category=laptops" class="nav-link">Laptops</a></li>
+                <li><a href="products.html?category=monitors" class="nav-link">Monitors</a></li>
+                <li><a href="products.html?category=all" class="nav-link">All Products</a></li>
+            </ul>
+            <div class="navbar-right">
+                <a href="account.html" class="login-link active">Account</a>
+                <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>My Account</h1>
+        <p>Manage your profile and orders</p>
+    </div>
+
+    <!-- ACCOUNT CONTAINER -->
+    <div class="account-container">
+        <!-- USER INFO SECTION -->
+        <section class="account-section user-info-section">
+            <h2>Account Information</h2>
+            <div class="user-card">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <h3 id="user-name">Riya Kaki</h3>
+                    <p id="user-email">riya.kaki@gmail.com</p>
+                    <p class="user-member">Member since 2024</p>
+                </div>
+            </div>
+            <div class="user-actions">
+                <button class="btn btn-secondary" onclick="editProfile()">Edit Profile</button>
+                <button class="btn btn-secondary" onclick="changePassword()">Change Password</button>
+            </div>
+        </section>
+
+        <!-- ORDER HISTORY SECTION -->
+        <section class="account-section order-history-section">
+            <h2>Order History</h2>
+            
+            <div id="orders-container" class="orders-container">
+                <!-- Orders will be loaded here by JavaScript -->
+            </div>
+
+            <div id="no-orders" class="no-orders">
+                <p>No orders yet. Start shopping!</p>
+                <a href="products.html" class="btn btn-primary">Browse Products</a>
+            </div>
+        </section>
+
+        <!-- ACCOUNT SETTINGS SECTION -->
+        <section class="account-section settings-section">
+            <h2>Account Settings</h2>
+            
+            <div class="settings-list">
+                <div class="settings-item">
+                    <div>
+                        <h3>Email Notifications</h3>
+                        <p>Receive updates about your orders and new products</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="settings-item">
+                    <div>
+                        <h3>Marketing Emails</h3>
+                        <p>Get exclusive offers and promotions</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox">
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="settings-item">
+                    <div>
+                        <h3>Two-Factor Authentication</h3>
+                        <p>Secure your account with an extra layer of protection</p>
+                    </div>
+                    <button class="btn btn-small">Enable</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGOUT SECTION -->
+        <section class="account-section logout-section">
+            <div class="logout-content">
+                <h2>Sign Out</h2>
+                <p>You can sign out from your account here. You'll need to log in again to access your account.</p>
+                <button class="btn btn-danger" onclick="logout()">Sign Out</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Renexa Market</h4>
+                <p>Your trusted source for premium tech products and accessories.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Mobile Phones</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Monitors</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: support@renexamarket.com</p>
+                <p>Birtamode, Jhapa, Nepal</p>
+                <p>Phone: 9806068870</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Renexa Market. Created by Riya Kaki. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/account.js"></script>
+</body>
+</html>

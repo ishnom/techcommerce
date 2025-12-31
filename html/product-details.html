@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Renexa Market</title>
+    <link rel="stylesheet" href="../css/products.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1><a href="../index.html">Renexa Market</a></h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html?category=mobiles" class="nav-link">Mobile Phones</a></li>
+                <li><a href="products.html?category=laptops" class="nav-link">Laptops</a></li>
+                <li><a href="products.html?category=monitors" class="nav-link">Monitors</a></li>
+                <li><a href="products.html?category=all" class="nav-link">All Products</a></li>
+            </ul>
+            <div class="navbar-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." class="search-input" id="searchInput">
+                    <button class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                <a href="login.html" class="login-link">Login</a>
+                <a href="cart.html" class="cart-icon">
+                    🛒
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE SEARCH BAR -->
+    <div class="mobile-search-bar">
+        <input type="text" placeholder="Search products..." class="mobile-search-input" id="mobileSearchInput">
+        <button class="mobile-search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu">
+            <button class="close-menu" id="closeMenu">&times;</button>
+            <ul class="mobile-menu-list">
+                <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+                <li><a href="products.html?category=mobiles" class="mobile-nav-link">Mobile Phones</a></li>
+                <li><a href="products.html?category=laptops" class="mobile-nav-link">Laptops</a></li>
+                <li><a href="products.html?category=monitors" class="mobile-nav-link">Monitors</a></li>
+                <li><a href="products.html?category=all" class="mobile-nav-link">All Products</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>&gt;</span>
+        <a href="products.html">Products</a>
+        <span>&gt;</span>
+        <span id="breadcrumb-product">Product</span>
+    </div>
+
+    <!-- PRODUCT DETAILS SECTION -->
+    <section class="product-details-section">
+        <div class="product-details-container">
+            <div class="product-image-wrapper">
+                <img id="product-image" src="/placeholder.svg" alt="Product" class="product-image-large">
+            </div>
+
+            <div class="product-details-info">
+                <h1 id="product-title">Product Title</h1>
+                
+                <div class="rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="review-count">(234 reviews)</span>
+                </div>
+
+                <div class="product-price-section">
+                    <div class="price">
+                        <span id="product-price">Rs 0</span>
+                        <span id="original-price" class="original-price">Rs 0</span>
+                    </div>
+                    <span id="product-availability" class="availability-badge">In Stock</span>
+                </div>
+
+                <div class="product-description">
+                    <h3>Description</h3>
+                    <p id="product-desc">Product description goes here</p>
+                </div>
+
+                <div class="product-specifications">
+                    <h3>Specifications</h3>
+                    <ul id="specifications-list">
+                        <li>Specification 1</li>
+                        <li>Specification 2</li>
+                        <li>Specification 3</li>
+                    </ul>
+                </div>
+
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQuantity()">−</button>
+                        <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                        <button class="qty-btn" onclick="increaseQuantity()">+</button>
+                    </div>
+                    <button class="btn btn-primary btn-add-cart" onclick="addProductToCart()">Add to Cart</button>
+                    <button class="btn btn-secondary btn-wishlist" onclick="addToWishlist()">♥ Wishlist</button>
+                </div>
+
+                <div class="shipping-info">
+                    <h3>Shipping & Returns</h3>
+                    <p>✓ Free shipping on orders over Rs 5000</p>
+                    <p>✓ 30-day money back guarantee</p>
+                    <p>✓ 2-year warranty included</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED PRODUCTS SECTION -->
+    <section class="related-products">
+        <div class="section-header">
+            <h2>Related Products</h2>
+        </div>
+        <div class="products-grid" id="related-products-grid">
+            <!-- Related products loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Renexa Market</h4>
+                <p>Your trusted source for premium tech products and accessories.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Mobile Phones</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Monitors</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: support@renexamarket.com</p>
+                <p>Birtamode, Jhapa, Nepal</p>
+                <p>Phone: 9806068870</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Renexa Market. Created by Riya Kaki. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/product-details.js"></script>
+</body>
+</html>

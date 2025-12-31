@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Renexa Market</title>
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1><a href="../index.html">Renexa Market</a></h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html?category=mobiles" class="nav-link">Mobile Phones</a></li>
+                <li><a href="products.html?category=laptops" class="nav-link">Laptops</a></li>
+                <li><a href="products.html?category=monitors" class="nav-link">Monitors</a></li>
+                <li><a href="products.html?category=all" class="nav-link">All Products</a></li>
+            </ul>
+            <div class="navbar-right">
+                <a href="login.html" class="login-link">Login</a>
+                <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>Checkout</h1>
+    </div>
+
+    <!-- CHECKOUT CONTAINER -->
+    <div class="checkout-container">
+        <!-- CHECKOUT FORM SECTION -->
+        <div class="checkout-form-section">
+            <h2>Delivery Address</h2>
+            <form id="checkoutForm" onsubmit="placeOrder(event)">
+                <!-- Address Information -->
+                <fieldset class="form-fieldset">
+                    <legend>Shipping Address</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Full Name *</label>
+                            <input type="text" id="fullname" name="fullname" required placeholder="Riya Kaki">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="riya.kaki@gmail.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Street Address *</label>
+                        <input type="text" id="address" name="address" required placeholder="123 Main Street">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city" required placeholder="New York">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" name="state" required placeholder="NY">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Zip Code *</label>
+                            <input type="text" id="zip" name="zip" required placeholder="10001">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                    </div>
+                </fieldset>
+
+                <!-- Payment Method -->
+                <fieldset class="form-fieldset">
+                    <legend>Payment Method</legend>
+                    
+                    <div class="form-group">
+                        <label for="payment">Select Payment Method *</label>
+                        <select id="payment" name="payment" required>
+                            <option value="">-- Choose Payment Method --</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="apple-pay">Apple Pay</option>
+                            <option value="google-pay">Google Pay</option>
+                        </select>
+                    </div>
+
+                    <div id="card-details" class="card-details" style="display: none">
+                        <div class="form-group">
+                            <label for="cardname">Cardholder Name *</label>
+                            <input type="text" id="cardname" name="cardname" placeholder="Riya Kaki">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardnumber">Card Number *</label>
+                            <input type="text" id="cardnumber" name="cardnumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date *</label>
+                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV *</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Order Terms -->
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the Terms & Conditions and Privacy Policy</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Place Order</button>
+            </form>
+        </div>
+
+        <!-- ORDER SUMMARY SECTION -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="checkout-items" class="checkout-items"></div>
+            
+            <div class="summary-section">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="checkout-subtotal">Rs 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span id="checkout-shipping">Rs 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax:</span>
+                    <span id="checkout-tax">Rs 0</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="checkout-total">Rs 0</span>
+                </div>
+            </div>
+
+            <div class="order-benefits">
+                <h3>Order Benefits</h3>
+                <p>✓ Free shipping on orders over Rs 5000</p>
+                <p>✓ 30-day money back guarantee</p>
+                <p>✓ 2-year warranty included</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Renexa Market</h4>
+                <p>Your trusted source for premium tech products and accessories.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Mobile Phones</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Monitors</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: support@renexamarket.com</p>
+                <p>Birtamode, Jhapa, Nepal</p>
+                <p>Phone: 9806068870</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Renexa Market. Created by Riya Kaki. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>
